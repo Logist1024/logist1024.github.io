@@ -39,6 +39,9 @@
                 <GitHubIcon />
                 源码
               </a>
+              <a v-if="project.demo" :href="project.demo" target="_blank">
+                🌐 在线访问
+              </a>
             </div>
           </div>
         </div>
@@ -71,6 +74,18 @@ const projects = [
       { text: 'JavaScript', color: '' },
       { text: 'Static Site', color: 'green' },
       { text: 'i18n', color: 'purple' }
+    ]
+  },
+  {
+    name: 'Pages-docs',
+    icon: '📚',
+    description: '基于 Cloudflare Workers 的在线编辑文档站。访客免登录阅读（SSR + SEO），团队后台用 Vditor 编辑发布；内容存 D1、图片与每日备份存 R2、KV 页面缓存，支持全文搜索、版本历史与用量看板。',
+    github: 'https://github.com/Logist1024/Pages-docs',
+    demo: 'https://pages-docs.logist1024.workers.dev',
+    tags: [
+      { text: 'TypeScript', color: '' },
+      { text: 'Cloudflare Workers', color: 'green' },
+      { text: 'Hono / D1 / R2', color: 'purple' }
     ]
   }
 ]
