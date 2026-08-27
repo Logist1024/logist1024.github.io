@@ -464,48 +464,6 @@ main {
   margin-bottom: 16px;
 }
 
-.project-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.tag {
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  background: rgba(9, 105, 218, 0.1);
-  color: var(--accent-blue);
-  border: 1px solid rgba(9, 105, 218, 0.15);
-  transition: all var(--transition);
-}
-
-.tag:hover {
-  background: rgba(9, 105, 218, 0.18);
-}
-
-.tag.green {
-  background: rgba(26, 127, 55, 0.1);
-  color: var(--accent-green);
-  border-color: rgba(26, 127, 55, 0.15);
-}
-
-.tag.green:hover {
-  background: rgba(26, 127, 55, 0.18);
-}
-
-.tag.purple {
-  background: rgba(130, 80, 223, 0.1);
-  color: var(--accent-purple);
-  border-color: rgba(130, 80, 223, 0.15);
-}
-
-.tag.purple:hover {
-  background: rgba(130, 80, 223, 0.18);
-}
-
 .project-links {
   display: flex;
   gap: 12px;
