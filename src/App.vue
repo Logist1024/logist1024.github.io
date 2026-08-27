@@ -19,6 +19,11 @@
             联系邮箱: <a href="mailto:logist1024@hotmail.com">logist1024@hotmail.com</a>
           </div>
         </div>
+
+        <div class="friends-links">
+          <span class="friends-label">友情链接:</span>
+          <a href="https://h-s.tech/" target="_blank" rel="noopener noreferrer">HIGHLIGHT Studio</a>
+        </div>
       </div>
     </footer>
 
