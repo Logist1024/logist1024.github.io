@@ -58,12 +58,6 @@ const projects = [
     github: 'https://github.com/Logist1024/ServerTicket'
   },
   {
-    name: 'MCcmd',
-    icon: '⚒️',
-    description: 'Minecraft 指令生成器（静态网页）。选版本 → 挑指令 → 填参数 → 实时生成可直接粘贴到游戏中的指令。支持 Java 版 + 基岩版，30+ 条指令，中英双语。',
-    github: 'https://github.com/Logist1024/MCcmd'
-  },
-  {
     name: 'Pages-docs',
     icon: '📚',
     description: '基于 Cloudflare Workers 的在线编辑文档站。访客免登录阅读（SSR + SEO），团队后台用 Vditor 编辑发布；内容存 D1、图片与每日备份存 R2、KV 页面缓存，支持全文搜索、版本历史与用量看板。',
