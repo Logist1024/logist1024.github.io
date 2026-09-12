@@ -24,6 +24,11 @@
           <span class="friends-label">友情链接:</span>
           <a href="https://h-s.tech/" target="_blank" rel="noopener noreferrer">HIGHLIGHT Studio</a>
         </div>
+
+        <div class="friends-links">
+          <span class="friends-label">推广链接:</span>
+          <a href="https://www.rainyun.com/MTI0MjEyNw==" target="_blank" rel="noopener noreferrer">雨云</a>
+        </div>
       </div>
     </footer>
 
