@@ -55,19 +55,19 @@ import GitHubIcon from '../components/GitHubIcon.vue'
 
 const projects = [
   {
-    name: 'ServerTicket',
-    icon: '🎫',
-    description: '面向 Minecraft 1.20.4+ (Spigot/Paper) 的轻量级工单/反馈插件。支持提交工单、管理员管理、分类路由、邮件通知、离线投递、自动归档和速率限制等功能。',
-    github: 'https://github.com/Logist1024/ServerTicket',
-    tags: ['java', 'minecraft', 'minecraft-plugin', 'paper', 'spigot', 'ticket-system']
+    name: 'logist1024.github.io',
+    icon: '🏠',
+    description: '个人主页站点。Vue 3 + Vite + Vue Router（Hash 模式）构建的单页应用，部署于 GitHub Pages。包含首页项目展示、关于页技术栈与学习计划，支持任意子路径部署。',
+    github: 'https://github.com/Logist1024/logist1024.github.io',
+    demo: 'https://logist1024.github.io',
+    tags: ['vue3', 'vite', 'vue-router', 'github-pages', 'spa']
   },
   {
-    name: 'Pages-docs',
-    icon: '📚',
-    description: '基于 Cloudflare Workers 的在线编辑文档站。访客免登录阅读（SSR + SEO），团队后台用 Vditor 编辑发布；内容存 D1、图片与每日备份存 R2、KV 页面缓存，支持全文搜索、版本历史与用量看板。',
-    github: 'https://github.com/Logist1024/Pages-docs',
-    demo: 'https://pages-docs.logist1024.workers.dev',
-    tags: ['cloudflare-workers', 'documentation', 'hono', 'markdown-editor', 'typescript']
+    name: 'ServerTicket',
+    icon: '🎫',
+    description: '面向 Minecraft 1.20.4+ (Spigot/Paper) 的轻量级工单/反馈插件。支持提交工单、管理员管理、分类路由、邮件通知（Jakarta Mail 内嵌）、离线投递、自动归档、频率限制、服务器指标采集（TPS/TickTime/Ping）及完整国际化（zh_CN/en_US）。',
+    github: 'https://github.com/Logist1024/ServerTicket',
+    tags: ['java', 'minecraft', 'minecraft-plugin', 'paper', 'spigot', 'ticket-system']
   }
 ]
 
