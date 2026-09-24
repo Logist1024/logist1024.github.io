@@ -1,7 +1,9 @@
 <template>
   <div class="about-page">
     <div class="container">
-      <h1 class="section-title">关于我</h1>
+      <div class="about-header">
+        <h1 class="section-title">关于我</h1>
+      </div>
 
       <div class="about-content">
         <p class="about-intro">
@@ -10,27 +12,45 @@
 
         <h2>爱好</h2>
         <ul>
-          <li>计算机</li>
-          <li>AI</li>
-          <li>网站</li>
-          <li>Minecraft</li>
-          <li>Counter-Strike</li>
+          <li class="chip">计算机</li>
+          <li class="chip">AI</li>
+          <li class="chip">网站</li>
+          <li class="chip">Minecraft</li>
+          <li class="chip">Counter-Strike</li>
         </ul>
 
         <h2>在学习</h2>
         <ol>
-          <li>高中的学校知识😭</li>
-          <li>AI Agents</li>
-          <li>Java</li>
+          <li class="chip">高中的学校知识😭</li>
+          <li class="chip">AI Agents</li>
+          <li class="chip">Java</li>
         </ol>
 
         <h2>梦想</h2>
         <p>有点小成就</p>
-      </div>
 
+        <h2>联系我</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="icon"><AppIcon name="mail" :size="20" /></div>
+            <div>
+              <div class="label">邮箱</div>
+              <a class="value" href="mailto:logist1024@hotmail.com">logist1024@hotmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><AppIcon name="github" :size="20" /></div>
+            <div>
+              <div class="label">GitHub</div>
+              <a class="value" href="https://github.com/Logist1024" target="_blank" rel="noopener noreferrer">github.com/Logist1024</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import AppIcon from '../components/AppIcon.vue'
 </script>

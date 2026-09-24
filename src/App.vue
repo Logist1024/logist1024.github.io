@@ -20,45 +20,28 @@
           </div>
         </div>
 
-        <div class="friends-links">
-          <span class="friends-label">友情链接:</span>
-          <a href="https://h-s.tech/" target="_blank" rel="noopener noreferrer">HIGHLIGHT Studio</a>
+        <div class="footer-links">
+          <div class="link-group">
+            <span class="link-group-label">友情链接</span>
+            <a class="footer-link" href="https://h-s.tech/" target="_blank" rel="noopener noreferrer">HIGHLIGHT Studio</a>
+          </div>
+          <div class="link-group">
+            <span class="link-group-label">推广链接</span>
+            <a class="footer-link" href="https://www.rainyun.com/MTI0MjEyNw==" target="_blank" rel="noopener noreferrer">雨云</a>
+          </div>
         </div>
 
-        <div class="friends-links">
-          <span class="friends-label">推广链接:</span>
-          <a href="https://www.rainyun.com/MTI0MjEyNw==" target="_blank" rel="noopener noreferrer">雨云</a>
+        <div class="footer-bottom">
+          <span>© {{ year }} Logist · Vue 3 + Vite 构建</span>
+          <span class="footer-motto">If you don't know the meaning of living, try to create it.</span>
         </div>
       </div>
     </footer>
-
-    <button class="scroll-top" :class="{ visible: showScrollTop }" @click="scrollToTop" title="回到顶部">
-      <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-        <path d="M3.22 9.78a.749.749 0 010-1.06l4.25-4.25a.749.749 0 011.06 0l4.25 4.25a.749.749 0 11-1.06 1.06L8 6.06 4.28 9.78a.749.749 0 01-1.06 0z"/>
-      </svg>
-    </button>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
 import NavBar from './components/NavBar.vue'
 
-const showScrollTop = ref(false)
-
-function onScroll() {
-  showScrollTop.value = window.scrollY > 300
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
-})
+const year = new Date().getFullYear()
 </script>
