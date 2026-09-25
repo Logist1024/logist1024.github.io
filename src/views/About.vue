@@ -1,9 +1,10 @@
 <template>
   <div class="about-page">
     <div class="container">
-      <div class="about-header">
-        <h1 class="section-title">关于我</h1>
-      </div>
+      <header class="page-head">
+        <span class="section-eyebrow">About</span>
+        <h1 class="page-title">关于我</h1>
+      </header>
 
       <div class="about-content">
         <p class="about-intro">
@@ -32,14 +33,14 @@
         <h2>联系我</h2>
         <div class="contact-grid">
           <div class="contact-card">
-            <div class="icon"><AppIcon name="mail" :size="20" /></div>
+            <div class="contact-icon"><AppIcon name="mail" :size="20" /></div>
             <div>
               <div class="label">邮箱</div>
               <a class="value" href="mailto:logist1024@hotmail.com">logist1024@hotmail.com</a>
             </div>
           </div>
-          <div class="contact-card">
-            <div class="icon"><AppIcon name="github" :size="20" /></div>
+          <div class="contact-card contact-card--purple">
+            <div class="contact-icon"><AppIcon name="github" :size="20" /></div>
             <div>
               <div class="label">GitHub</div>
               <a class="value" href="https://github.com/Logist1024" target="_blank" rel="noopener noreferrer">github.com/Logist1024</a>
