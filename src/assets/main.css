@@ -1106,10 +1106,28 @@ main {
 }
 
 /* ============================================================
-   About Page
+   About Page —— Bento 网格
+   主卡(简介) / 重点卡(梦想) / 信息卡(爱好·在学习) / 功能卡(联系我)
+   用尺寸、留白、底色、描边与图标色区分信息层级
    ============================================================ */
 .about-page {
+  position: relative;
   padding: clamp(48px, 7vw, 88px) 0;
+}
+
+/* 装饰层：紫黄柔光，与首页 Hero 同一语言 */
+.about-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(48% 62% at 16% 6%, var(--glow-purple), transparent 72%),
+    radial-gradient(40% 54% at 86% 2%, var(--glow-star), transparent 72%);
+}
+
+.about-page > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .page-head {
@@ -1126,72 +1144,353 @@ main {
   letter-spacing: -0.02em;
 }
 
-.about-content {
-  max-width: 720px;
+/* 标题下的品牌渐变短线 */
+.head-rule {
+  width: min(240px, 46%);
+  height: 3px;
+  margin-top: var(--sp-2);
+  border-radius: var(--r-full);
+  background: var(--brand-gradient);
+  opacity: 0.85;
 }
 
-.about-intro {
-  font-size: clamp(17px, 1.8vw, 20px);
-  font-weight: 400;
-  line-height: var(--lh-relaxed);
-  color: var(--text);
-  max-width: 720px;
+/* ---------- 网格骨架：桌面 3 列 ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    'intro intro dream'
+    'hobby learning dream'
+    'contact contact contact';
+  gap: var(--sp-5);
 }
 
-.about-content h2 {
+.about-card {
+  --card-c: var(--c-purple);
+  --card-ink: var(--c-purple-ink);
+  --card-bg: var(--c-purple-bg);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: none;
+  border-radius: var(--r-xl);
+  box-shadow: var(--card-shadow);
+  animation: fadeInUp 0.5s var(--ease) both;
+  transition: box-shadow var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+
+/* hover 露出顶部品牌渐变星芒线（与项目卡同一语言） */
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+
+.about-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.about-card:hover::before {
+  opacity: 0.9;
+}
+
+.about-card--intro {
+  grid-area: intro;
+  padding: clamp(24px, 3vw, 36px);
+  background-image: linear-gradient(135deg, var(--accent-soft) 0%, transparent 62%);
+  animation-delay: 0.05s;
+}
+
+.about-card--dream {
+  grid-area: dream;
+  justify-content: center;
+  gap: var(--sp-4);
+  padding: clamp(24px, 3vw, 32px);
+  background-image: radial-gradient(120% 88% at 100% 0%, var(--glow-star), transparent 64%),
+    linear-gradient(160deg, var(--accent-soft) 0%, var(--star-soft) 100%);
+  border: 1px solid var(--star-border);
+  animation-delay: 0.13s;
+}
+
+.about-card--hobby {
+  grid-area: hobby;
+  --card-c: var(--c-blue);
+  --card-ink: var(--c-blue-ink);
+  --card-bg: var(--c-blue-bg);
+  animation-delay: 0.21s;
+}
+
+.about-card--learning {
+  grid-area: learning;
+  --card-c: var(--c-green);
+  --card-ink: var(--c-green-ink);
+  --card-bg: var(--c-green-bg);
+  animation-delay: 0.29s;
+}
+
+.about-card--contact {
+  grid-area: contact;
+  animation-delay: 0.37s;
+}
+
+/* ---------- 卡片头部：彩色圆底图标 + 标题 + 数量 ---------- */
+.card-head {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: var(--fs-xl);
+  gap: var(--sp-3);
+  min-width: 0;
+  margin-bottom: var(--sp-4);
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--card-bg);
+  color: var(--card-ink);
+  flex: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card-icon .icon {
+  color: inherit;
+}
+
+.about-card:hover .card-icon {
+  box-shadow: 0 0 0 5px var(--card-bg);
+  transform: rotate(-6deg);
+}
+
+.card-title {
+  min-width: 0;
+  font-size: var(--fs-lg);
   font-weight: 500;
-  margin: var(--sp-12) 0 var(--sp-5);
 }
 
-.about-content h2:first-of-type {
-  margin-top: var(--sp-8);
+.card-eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
-.about-content h2::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 4px;
-  background: var(--brand-gradient);
+.card-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  margin-left: auto;
+  padding: 0 8px;
+  border-radius: var(--r-full);
+  background: var(--card-bg);
+  color: var(--card-ink);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
   flex: none;
 }
 
-.about-content p {
-  font-size: var(--fs-base);
+/* ---------- 主卡：一句话简介 ---------- */
+.about-intro {
+  max-width: 44ch;
+  font-size: clamp(17px, 1.8vw, 21px);
+  font-weight: 400;
   line-height: var(--lh-relaxed);
-  color: var(--text-soft);
+  color: var(--text);
 }
 
-.about-content ul,
-.about-content ol {
+/* ---------- 重点卡：梦想 ---------- */
+.dream-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  background: var(--brand-gradient);
+  color: var(--on-accent);
+  box-shadow: 0 12px 26px -14px var(--ring);
+  flex: none;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+.dream-mark .icon {
+  color: inherit;
+}
+
+.about-card--dream:hover .dream-mark {
+  transform: rotate(-8deg) scale(1.04);
+}
+
+.dream-label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--star-strong);
+}
+
+.dream-text {
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 信息卡：爱好标签 ---------- */
+.fact-list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2);
 }
 
-.about-content ol {
-  counter-reset: about-counter;
-}
+.fact-chip {
+  --chip-c: var(--c-blue);
+  --chip-ink: var(--c-blue-ink);
+  --chip-bg: var(--c-blue-bg);
 
-.about-content ol li {
-  counter-increment: about-counter;
-}
-
-.about-content ol li::before {
-  content: counter(about-counter);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: var(--r-full);
+  background: var(--chip-bg);
+  color: var(--chip-ink);
+  font-size: var(--fs-sm);
   font-weight: 500;
-  color: var(--accent);
+  line-height: 1;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.fact-chip::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-full);
+  background: var(--chip-c);
+  flex: none;
+}
+
+.fact-chip:nth-child(5n + 1) {
+  --chip-c: var(--c-blue);
+  --chip-ink: var(--c-blue-ink);
+  --chip-bg: var(--c-blue-bg);
+}
+
+.fact-chip:nth-child(5n + 2) {
+  --chip-c: var(--c-yellow);
+  --chip-ink: var(--c-yellow-ink);
+  --chip-bg: var(--c-yellow-bg);
+}
+
+.fact-chip:nth-child(5n + 3) {
+  --chip-c: var(--c-green);
+  --chip-ink: var(--c-green-ink);
+  --chip-bg: var(--c-green-bg);
+}
+
+.fact-chip:nth-child(5n + 4) {
+  --chip-c: var(--c-red);
+  --chip-ink: var(--c-red-ink);
+  --chip-bg: var(--c-red-bg);
+}
+
+.fact-chip:nth-child(5n + 5) {
+  --chip-c: var(--c-purple);
+  --chip-ink: var(--c-purple-ink);
+  --chip-bg: var(--c-purple-bg);
+}
+
+.fact-chip:hover {
+  box-shadow: inset 0 0 0 1.5px var(--chip-c);
+  transform: translateY(-1px);
+}
+
+/* ---------- 信息卡：在学习（有序步骤） ---------- */
+.learn-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.learn-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+  padding: 10px var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--bg-subtle);
+  transition: background var(--transition);
+}
+
+.learn-item:hover {
+  background: var(--card-bg);
+}
+
+.learn-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-full);
+  background: var(--card-bg);
+  color: var(--card-ink);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  flex: none;
+}
+
+.learn-text {
+  min-width: 0;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 功能卡：联系我（灰底描边，与白卡分层） ---------- */
+.about-card--contact {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.about-card--contact::before {
+  display: none;
+}
+
+.about-card--contact:hover {
+  transform: none;
+  box-shadow: var(--elevation-1);
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--sp-4);
-  margin-top: var(--sp-5);
 }
 
 .contact-card {
@@ -1202,12 +1501,17 @@ main {
   display: flex;
   align-items: center;
   gap: var(--sp-4);
+  min-width: 0;
   padding: var(--sp-5);
   background: var(--bg-surface);
   border: none;
   border-radius: var(--r-lg);
   box-shadow: var(--card-shadow);
   transition: box-shadow var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+
+.contact-card > div {
+  min-width: 0;
 }
 
 .contact-card--purple {
@@ -1503,6 +1807,20 @@ main {
     flex-wrap: wrap;
     gap: var(--sp-1);
   }
+
+  /* 关于页：3 列 Bento → 2 列，梦想卡转为整行横幅 */
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      'intro intro'
+      'hobby learning'
+      'dream dream'
+      'contact contact';
+  }
+
+  .about-card--dream {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1584,6 +1902,35 @@ main {
     padding: var(--sp-5);
   }
 
+  /* 关于页：单列纵向流，卡片内边距与圆角同步收紧 */
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'intro'
+      'hobby'
+      'learning'
+      'dream'
+      'contact';
+    gap: var(--sp-4);
+  }
+
+  .about-card {
+    padding: var(--sp-5);
+    border-radius: var(--r-lg);
+  }
+
+  .about-intro {
+    font-size: var(--fs-md);
+  }
+
+  .dream-text {
+    font-size: 22px;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .ad-banner {
     padding: var(--sp-6) var(--sp-5);
   }
@@ -1631,9 +1978,16 @@ main {
   }
 
   .project-card:hover,
+  .about-card:hover,
   .contact-card:hover,
+  .fact-chip:hover,
   .btn:hover,
   .tag:hover {
+    transform: none;
+  }
+
+  .about-card:hover .card-icon,
+  .about-card--dream:hover .dream-mark {
     transform: none;
   }
 }

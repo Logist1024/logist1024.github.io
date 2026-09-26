@@ -1,25 +1,16 @@
-<template>
-  <svg
-    class="icon"
-    :width="size"
-    :height="size"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    :stroke-width="resolvedStroke"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path v-for="(d, i) in paths" :key="i" :d="d" />
-  </svg>
-</template>
+import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
 
-<script setup>
+const _hoisted_1 = ["width", "height", "stroke-width"]
+const _hoisted_2 = ["d"]
+
 import { computed } from 'vue'
 
-const props = defineProps({
+const TARGET_PX = 1.75
+
+
+export default {
+  __name: 'AppIcon',
+  props: {
   /** 图标名称，取值见下方 ICONS 注册表 */
   name: { type: String, required: true },
   /** 渲染尺寸（px），建议 16 / 18 / 20 / 24 */
@@ -29,9 +20,10 @@ const props = defineProps({
    * 保证 16 / 18 / 20 / 24 各尺寸下实际线宽一致，避免小图标描边过细发虚。
    */
   strokeWidth: { type: [Number, String], default: null }
-})
+},
+  setup(__props) {
 
-const TARGET_PX = 1.75
+const props = __props
 
 const resolvedStroke = computed(() => {
   if (props.strokeWidth !== null && props.strokeWidth !== '') return props.strokeWidth
@@ -109,4 +101,29 @@ const ICONS = {
 }
 
 const paths = computed(() => ICONS[props.name] || [])
-</script>
+
+return (_ctx, _cache) => {
+  return (_openBlock(), _createElementBlock("svg", {
+    class: "icon",
+    width: __props.size,
+    height: __props.size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": resolvedStroke.value,
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    "aria-hidden": "true",
+    focusable: "false"
+  }, [
+    (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(paths.value, (d, i) => {
+      return (_openBlock(), _createElementBlock("path", {
+        key: i,
+        d: d
+      }, null, 8 /* PROPS */, _hoisted_2))
+    }), 128 /* KEYED_FRAGMENT */))
+  ], 8 /* PROPS */, _hoisted_1))
+}
+}
+
+}
